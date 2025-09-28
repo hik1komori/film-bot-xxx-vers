@@ -6,7 +6,7 @@ BOT_TOKEN = "8294465646:AAGSjjgGz3xv2sT-auiB5o6gIuQKRwRXsy8"
 
 # ID администраторов (можно получить через @userinfobot)
 ADMIN_IDS = [5494287847, 6531897948]
-CODES_CHANNEL = "https://t.me/kino_kodlari_s" 
+CODES_CHANNEL = "https://t.me/proda_kod" 
 # ID архив-канала (где хранятся фильмы) (например: -1001234567890)
 ARCHIVE_CHANNEL_ID = -1003022803360
 
