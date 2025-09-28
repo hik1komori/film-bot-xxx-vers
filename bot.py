@@ -206,13 +206,13 @@ async def show_subscription_required(update: Update, context: ContextTypes.DEFAU
         channel_name = title or username
         # Убедимся, что username правильный для URL
         clean_username = username.lstrip('@')
-        keyboard.append([InlineKeyboardButton(f"Подписаться на {channel_name}", url=f"https://t.me/{clean_username}")])
+        keyboard.append([InlineKeyboardButton(f"A'zo bolish {channel_name}", url=f"https://t.me/{clean_username}")])
     
-    keyboard.append([InlineKeyboardButton("✅ Я подписался", callback_data="check_subscription")])
+    keyboard.append([InlineKeyboardButton("✅ Tekshirish", callback_data="check_subscription")])
     
     reply_markup = InlineKeyboardMarkup(keyboard)
     
-    text = "📢 Для использования бота необходимо подписаться на наши каналы:\n\n" + \
+    text = "📢 Botdan foydalanish uchun kanallarimizga obuna bo'lishingiz kerak:\n\n" + \
            "\n".join([f"• {title or username}" for channel_id, username, title in not_subscribed_channels])
     
     try:
@@ -222,7 +222,7 @@ async def show_subscription_required(update: Update, context: ContextTypes.DEFAU
             await update.message.reply_text(text, reply_markup=reply_markup)
         return False
     except Exception as e:
-        logger.error(f"Ошибка показа подписки: {e}")
+        logger.error(f"Obunani ko'rsatish xatosi: {e}")
         return False
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -250,9 +250,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     
     if not not_subscribed:
         await update.message.reply_text(
-            f"🎬 Добро пожаловать, {user.first_name}!\n\n"
-            "Введите код фильма чтобы получить видео.\n\n"
-            f"📺 Коды фильмов можно посмотреть в нашем канале: {CODES_CHANNEL}"
+            f"🎬 Xush kelibsiz, {user.first_name}!\n\n"
+            "Kodni kiriting videoni yuklab olish uchun.\n\n"
+            f"📺 Video kodlarini kanalimizda ko'rishingiz mumkin: {CODES_CHANNEL}"
         )
     else:
         await show_subscription_required(update, context, not_subscribed)
@@ -273,13 +273,13 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     await context.bot.send_video(
                         chat_id=user.id,
                         video=file_id,
-                        caption=caption or f"Фильм по коду {code}",
+                        caption=caption or f"Kod bo'yicha film {code}",
                         protect_content=True
                     )
                 except Exception as e:
-                    await update.message.reply_text(f"❌ Ошибка: {e}")
+                    await update.message.reply_text(f"❌ Xato: {e}")
             else:
-                await update.message.reply_text("❌ Фильм не найден")
+                await update.message.reply_text("❌ Film topilmadi")
         return
     
     # Обычные пользователи - проверяем подписку на ВСЕ каналы ПЕРЕД обработкой
@@ -305,14 +305,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 await context.bot.send_video(
                     chat_id=user.id,
                     video=file_id,
-                    caption=caption or f"Фильм по коду {code}",
+                    caption=caption or f"Kod bo'yicha film {code}",
                     protect_content=True
                 )
                 
                 # Отправляем ссылку на канал с кодами
                 await context.bot.send_message(
                     chat_id=user.id,
-                    text=f"📺 Больше кодов фильмов в нашем канале: {CODES_CHANNEL}",
+                    text=f"📺 Kodlarini kanalimizda ko'rishingiz mumkin: {CODES_CHANNEL}",
                     disable_web_page_preview=True
                 )
                 
@@ -321,8 +321,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 await update.message.reply_text("❌ Ошибка при отправке видео")
         else:
             await update.message.reply_text(
-                f"❌ Фильм с таким кодом не найден\n\n"
-                f"📺 Посмотреть доступные коды можно в канале: {CODES_CHANNEL}"
+                f"❌ Ushbu kod bilan video topilmadi\n\n"
+                f"📺 Kodlarini kanalimizda ko'rishingiz mumkin: {CODES_CHANNEL}"
             )
     else:
         try:
@@ -395,9 +395,9 @@ async def check_subscription_callback(update: Update, context: ContextTypes.DEFA
     
     if not not_subscribed:
         await query.message.edit_text(
-            f"✅ Отлично! Теперь вы можете использовать бота.\n\n"
-            "Введите код фильма чтобы получить видео.\n\n"
-            f"📺 Коды фильмов можно посмотреть в канале: {CODES_CHANNEL}"
+            f"✅ Ajoyib! Endi siz botdan foydalanishingiz mumkin.\n\n"
+            "Kodni kiriting videoni yuklab olish uchun.\n\n"
+            f"📺 Video kodlarini kanalimizda ko'rishingiz mumkin:: {CODES_CHANNEL}"
         )
     else:
         # Удаляем старое сообщение и показываем новое с актуальным списком каналов
