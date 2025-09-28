@@ -1,8 +1,11 @@
 import os
 from typing import List
+from dotenv import load_dotenv
 
+load_dotenv() 
 # Токен бота от @BotFather
-BOT_TOKEN = os.getenv("7361611338:AAEZ1BvOFZD_vf3Zenis2J4_SNf2TahE9u8")
+
+BOT_TOKEN = "7361611338:AAEZ1BvOFZD_vf3Zenis2J4_SNf2TahE9u8"
 
 # ID администраторов (можно получить через @userinfobot)
 ADMIN_IDS = [7504594263, 6531897948]
