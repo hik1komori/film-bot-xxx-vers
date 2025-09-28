@@ -1,8 +1,5 @@
 import os
 from typing import List
-from dotenv import load_dotenv
-
-load_dotenv() 
 # Токен бота от @BotFather
 
 BOT_TOKEN = "7361611338:AAEZ1BvOFZD_vf3Zenis2J4_SNf2TahE9u8"
