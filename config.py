@@ -2,6 +2,7 @@ import os
 from typing import List
 # Токен бота от @BotFather
 
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 
 # ID администраторов (можно получить через @userinfobot)
