@@ -2,7 +2,7 @@ import os
 from typing import List
 # Токен бота от @BotFather
 
-BOT_TOKEN = "8294465646:AAGSjjgGz3xv2sT-auiB5o6gIuQKRwRXsy8"
+
 
 # ID администраторов (можно получить через @userinfobot)
 ADMIN_IDS = [5494287847, 6531897948]
