@@ -13,9 +13,7 @@ ARCHIVE_CHANNEL_ID = -1003022803360
 
 # Обязательные каналы для подписки (формат: {"channel_id": "@username"})
 REQUIRED_CHANNELS = {
-    -1003033129324: "@Xbet_Linebet_1xbet_Melbet_1Win",
-    -1002311525761: "@diamond_live500",
-    -1002774096741: "@azyro_live"
+    -1002774096741: "@azyro_azart"
 }
 
 
